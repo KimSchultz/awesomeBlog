@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Frontpage</summary>
 	[PublishedContentModel("frontpage")]
-	public partial class Frontpage : PublishedContentModel
+	public partial class Frontpage : Master
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "frontpage";
@@ -46,12 +46,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Title
+		/// Header
 		///</summary>
-		[ImplementPropertyType("title")]
-		public string Title
+		[ImplementPropertyType("header")]
+		public string Header
 		{
-			get { return this.GetPropertyValue<string>("title"); }
+			get { return this.GetPropertyValue<string>("header"); }
 		}
 	}
 }
