@@ -1,0 +1,14 @@
+.container {
+    border: 1px solid black;
+}
+header {
+    text-align: center;
+}
+nav .row{
+    background-color: black;
+}
+
+nav .col {
+    color: white;
+    text-align: center;
+}
