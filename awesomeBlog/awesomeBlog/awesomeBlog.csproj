@@ -1670,6 +1670,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Models\AboutMe.generated.cs" />
+    <Compile Include="App_Data\Models\BlogPost.generated.cs" />
+    <Compile Include="App_Data\Models\BlogPosts.generated.cs" />
     <Compile Include="App_Data\Models\File.generated.cs" />
     <Compile Include="App_Data\Models\Folder.generated.cs" />
     <Compile Include="App_Data\Models\Frontpage.generated.cs" />
@@ -1873,6 +1876,9 @@
     <Content Include="Umbraco\Webservices\TreeDataService.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
     <Content Include="Views\Root.cshtml" />
+    <Content Include="Views\AboutMe.cshtml" />
+    <Content Include="Views\BlogPost.cshtml" />
+    <Content Include="Views\BlogPosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
