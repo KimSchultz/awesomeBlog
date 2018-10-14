@@ -46,12 +46,30 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Card Image
+		///</summary>
+		[ImplementPropertyType("cardImage")]
+		public IPublishedContent CardImage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("cardImage"); }
+		}
+
+		///<summary>
 		/// Description
 		///</summary>
 		[ImplementPropertyType("description")]
 		public string Description
 		{
 			get { return this.GetPropertyValue<string>("description"); }
+		}
+
+		///<summary>
+		/// OG Image
+		///</summary>
+		[ImplementPropertyType("oGImage")]
+		public IPublishedContent OGimage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("oGImage"); }
 		}
 
 		///<summary>

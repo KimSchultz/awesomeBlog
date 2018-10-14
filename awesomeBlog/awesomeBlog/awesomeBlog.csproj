@@ -1879,6 +1879,8 @@
     <Content Include="Views\AboutMe.cshtml" />
     <Content Include="Views\BlogPost.cshtml" />
     <Content Include="Views\BlogPosts.cshtml" />
+    <Content Include="Views\Partials\_SocialTags.cshtml" />
+    <Content Include="Views\Partials\_Navigation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

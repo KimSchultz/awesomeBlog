@@ -53,5 +53,23 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return this.GetPropertyValue<string>("header"); }
 		}
+
+		///<summary>
+		/// OG Site Name
+		///</summary>
+		[ImplementPropertyType("oGSiteName")]
+		public string OGsiteName
+		{
+			get { return this.GetPropertyValue<string>("oGSiteName"); }
+		}
+
+		///<summary>
+		/// Twitter Handle
+		///</summary>
+		[ImplementPropertyType("twitterHandle")]
+		public string TwitterHandle
+		{
+			get { return this.GetPropertyValue<string>("twitterHandle"); }
+		}
 	}
 }
