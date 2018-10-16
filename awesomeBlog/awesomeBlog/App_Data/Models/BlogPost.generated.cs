@@ -62,5 +62,14 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return this.GetPropertyValue<Newtonsoft.Json.Linq.JToken>("post"); }
 		}
+
+		///<summary>
+		/// Post date
+		///</summary>
+		[ImplementPropertyType("postDate")]
+		public DateTime PostDate
+		{
+			get { return this.GetPropertyValue<DateTime>("postDate"); }
+		}
 	}
 }

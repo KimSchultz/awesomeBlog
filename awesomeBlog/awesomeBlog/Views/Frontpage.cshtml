@@ -2,139 +2,51 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "Root.cshtml";
-}
-@section header
-{
-    <title>@Model.Content.Header</title>
+    var blogMaster = Model.Content.Children.FirstOrDefault(x => x.IsDocumentType(BlogPosts.ModelTypeAlias));
+    var blogs = blogMaster.Descendants<BlogPost>().OrderByDescending(p => p.PostDate).ToList();
+    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("da-DK");
 }
 
-    <div class="row">
-        <div class="col">
-            <img class="img-fluid" src="images/dsc_2542.jpg">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-9 col-12">
+<div class="row">
+    <div class="col-md-9 col-12">
+        @if (blogs.Any())
+        {
             <div class="row">
                 <div class="col">
-                    <a href="#" class="main-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
+                    <a href="@blogs.FirstOrDefault().Url" class="main-article">
+                        <img class="img-fluid" src="@(blogs.FirstOrDefault().MainImage != null ? blogs.FirstOrDefault().MainImage.GetCropUrl("bigFrontpage") : string.Empty)">
                         <div class="article-info">
-                            <h2>Article name</h2>
-                            <button class="btn btn-outline-light">Læs mere</button>
+                            <h2>@blogs.FirstOrDefault().Name</h2>
+                            <div class="btn btn-outline-light">Læs mere</div>
                         </div>
                     </a>
                 </div>
                 <div class="w-100"></div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-6">
-                    <a href="#" class="sub-article">
-                        <img class="img-fluid" src="images/dsc_2542.jpg">
-                        <div class="article-presentation">
-                            <h3>Overskrift</h3>
-                            <span>September 21, 2018</span>
-                            <p>
-                                En kort beskrtivelse omrking vores rejser rundet i Dubai og område omkring lidt
-                                længere teskt
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                @foreach (var post in blogs.Skip(1))
+                {
+                    <div class="col-md-4 col">
+                        <a href="@post.Url" class="sub-article">
+                            <img class="img-fluid" src="@(post.MainImage != null ? post.MainImage.GetCropUrl("smallFrontpage") : string.Empty)">
+                            <div class="article-presentation">
+                                <h3>@post.Name</h3>
+                                <span>@post.PostDate.ToString("d. MMMM yyyy", culture)</span>
+                                <p>
+                                    @post.Description
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                }
             </div>
-        </div>
-        <div class="col-md-3 instagram-feed d-none d-sm-block">
-            <!-- LightWidget WIDGET -->
-            <script src="http://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="http://lightwidget.com/widgets/f995c55894f250dbad238d914e3bf087.html"
-                                                                                             scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
-        </div>
+        }
     </div>
+    <div class="col-md-3 instagram-feed d-none d-sm-block">
+        <a class="link-about-me" href="@Model.Content.AboutMeLink.Url">
+            <img class="img-fluid img-about-me" alt="about me image" src="@(Model.Content.AboutMeImage != null ? Model.Content.AboutMeImage.GetCropUrl("square") : string.Empty)">
+            <p>@Model.Content.AboutMeDescription</p>
+        </a>
+        <!-- LightWidget WIDGET -->
+        <script src="http://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="http://lightwidget.com/widgets/@(Model.Content.LightwidgetId).html"
+                                                                                         scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+    </div>
+</div>

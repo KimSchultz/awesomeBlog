@@ -46,12 +46,66 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// About me description
+		///</summary>
+		[ImplementPropertyType("aboutMeDescription")]
+		public string AboutMeDescription
+		{
+			get { return this.GetPropertyValue<string>("aboutMeDescription"); }
+		}
+
+		///<summary>
+		/// About me image
+		///</summary>
+		[ImplementPropertyType("aboutMeImage")]
+		public IPublishedContent AboutMeImage
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("aboutMeImage"); }
+		}
+
+		///<summary>
+		/// About me link
+		///</summary>
+		[ImplementPropertyType("aboutMeLink")]
+		public IPublishedContent AboutMeLink
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("aboutMeLink"); }
+		}
+
+		///<summary>
+		/// Facebook link
+		///</summary>
+		[ImplementPropertyType("facebookLink")]
+		public string FacebookLink
+		{
+			get { return this.GetPropertyValue<string>("facebookLink"); }
+		}
+
+		///<summary>
 		/// Header
 		///</summary>
 		[ImplementPropertyType("header")]
 		public string Header
 		{
 			get { return this.GetPropertyValue<string>("header"); }
+		}
+
+		///<summary>
+		/// Instagram link
+		///</summary>
+		[ImplementPropertyType("instagramLink")]
+		public string InstagramLink
+		{
+			get { return this.GetPropertyValue<string>("instagramLink"); }
+		}
+
+		///<summary>
+		/// LightwidgetId: Id from lightwidget for the instagram feed
+		///</summary>
+		[ImplementPropertyType("lightwidgetId")]
+		public string LightwidgetId
+		{
+			get { return this.GetPropertyValue<string>("lightwidgetId"); }
 		}
 
 		///<summary>
@@ -64,12 +118,30 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Sub header
+		///</summary>
+		[ImplementPropertyType("subHeader")]
+		public string SubHeader
+		{
+			get { return this.GetPropertyValue<string>("subHeader"); }
+		}
+
+		///<summary>
 		/// Twitter Handle
 		///</summary>
 		[ImplementPropertyType("twitterHandle")]
 		public string TwitterHandle
 		{
 			get { return this.GetPropertyValue<string>("twitterHandle"); }
+		}
+
+		///<summary>
+		/// Youtube link
+		///</summary>
+		[ImplementPropertyType("youtubeLink")]
+		public string YoutubeLink
+		{
+			get { return this.GetPropertyValue<string>("youtubeLink"); }
 		}
 	}
 }

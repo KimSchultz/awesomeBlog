@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoTemplatePage
 @{
     @* Get the root of the website *@
-    var root = CurrentPage.AncestorOrSelf(1);
+    var root = new Frontpage(CurrentPage.AncestorOrSelf(1));
 }
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,25 +13,32 @@
             <li class="nav-item@(root.Id == CurrentPage.Id ? " active" : null)">
                 <a class="nav-link" href="/">@root.Name</a>
             </li>
-            @foreach (var page in root.Children.Where("Visible"))
+            @foreach (var page in root.Children.Where(x => x.IsVisible()))
             {
-                <li class="nav-item@(page.IsAncestorOrSelf(CurrentPage) ? " active" : null)">
+                <li class="nav-item@(page.IsAncestorOrSelf((IPublishedContent)CurrentPage) ? " active" : null)">
                     <a class="nav-link" href="@page.Url">@page.Name</a>
                 </li>
             }
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-
-            </li>
-            <li class="nav-item">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-
-            </li>
-            <li class="nav-item">
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </li>
+            @if (!string.IsNullOrWhiteSpace(root.InstagramLink))
+            {
+                <li class="nav-item">
+                    <a href="@root.InstagramLink"><i class="fab fa-instagram"></i></a>
+                </li>
+            }
+            @if (!string.IsNullOrWhiteSpace(root.FacebookLink))
+            {
+                <li class="nav-item">
+                    <a href="@root.FacebookLink"><i class="fab fa-facebook-f"></i></a>
+                </li>
+            }
+            @if (!string.IsNullOrWhiteSpace(root.YoutubeLink))
+            {
+                <li class="nav-item">
+                    <a href="@root.YoutubeLink"><i class="fab fa-youtube"></i></a>
+                </li>
+            }
         </ul>
     </div>
 

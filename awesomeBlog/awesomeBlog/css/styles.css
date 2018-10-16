@@ -1,6 +1,6 @@
 body {
     background-color: #f6f6f6;
-    font-family: 'Mali', cursive;
+    font-family: 'Montserrat', sans-serif;
 }
 
 header {
@@ -13,30 +13,42 @@ a:hover {
 
 nav {
     background-color: black;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
-nav a {
-    display: block;
-    padding: 10px 10px;
-}
+    nav a {
+        display: block;
+        padding: 10px 10px;
+    }
 
 .social-media {
     text-align: right;
 }
 
-.social-media a {
-    display: inline-block;
-}
+    .social-media a {
+        display: inline-block;
+    }
 
 .container {
-    box-shadow: 0px 0 5px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
     background: white;
 }
 
-.instagram-feed{
-     display: block;
+.link-about-me {
+    text-align: center;
+    color: #333;
+    padding-bottom: 20px;
+    display: block;
+}
+
+.img-about-me {
+    border-radius: 100%;
+    margin-bottom: 15px;
+}
+
+.instagram-feed {
+    display: block;
     padding: 20px 20px 20px 0;
 }
 
@@ -52,15 +64,15 @@ nav .col {
     position: relative;
 }
 
-.main-article .article-info{
-    text-align: center;
-    color: white;
-    position: absolute;
-    bottom: 40px;
-    margin: auto;
-    right: 0;
-    left: 0;
-}
+    .main-article .article-info {
+        text-align: center;
+        color: white;
+        position: absolute;
+        bottom: 40px;
+        margin: auto;
+        right: 0;
+        left: 0;
+    }
 
 .sub-article {
     display: block;
@@ -69,20 +81,20 @@ nav .col {
     color: #333;
 }
 
-.sub-article span {
-    color: #c6c6c6;
-    font-size: 12px;
-}
+    .sub-article span {
+        color: #c6c6c6;
+        font-size: 12px;
+    }
 
-.sub-article .article-presentation {
-    text-align: center;
-    background-color: white;
-    position: relative;
-    margin: auto;
-    width: 75%;
-    margin-top: -20px;
-    color: #333;
-}
+    .sub-article .article-presentation {
+        text-align: center;
+        background-color: white;
+        position: relative;
+        margin: auto;
+        width: 75%;
+        margin-top: -20px;
+        color: #333;
+    }
 
 footer {
     padding: 10px 0;
