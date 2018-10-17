@@ -73,12 +73,30 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Copyright name
+		///</summary>
+		[ImplementPropertyType("copyrightName")]
+		public string CopyrightName
+		{
+			get { return this.GetPropertyValue<string>("copyrightName"); }
+		}
+
+		///<summary>
 		/// Facebook link
 		///</summary>
 		[ImplementPropertyType("facebookLink")]
 		public string FacebookLink
 		{
 			get { return this.GetPropertyValue<string>("facebookLink"); }
+		}
+
+		///<summary>
+		/// Google Analytics id
+		///</summary>
+		[ImplementPropertyType("googleAnalyticsId")]
+		public string GoogleAnalyticsId
+		{
+			get { return this.GetPropertyValue<string>("googleAnalyticsId"); }
 		}
 
 		///<summary>

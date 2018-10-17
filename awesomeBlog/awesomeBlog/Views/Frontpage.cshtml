@@ -8,11 +8,11 @@
 }
 
 <div class="row">
-    <div class="col-md-9 col-12">
+    <div class="col-md-9 col">
         @if (blogs.Any())
         {
             <div class="row">
-                <div class="col">
+                <div class="col-12">
                     <a href="@blogs.FirstOrDefault().Url" class="main-article">
                         <img class="img-fluid" src="@(blogs.FirstOrDefault().MainImage != null ? blogs.FirstOrDefault().MainImage.GetCropUrl("bigFrontpage") : string.Empty)">
                         <div class="article-info">
@@ -24,7 +24,7 @@
                 <div class="w-100"></div>
                 @foreach (var post in blogs.Skip(1))
                 {
-                    <div class="col-md-4 col">
+                    <div class="col-md-4 col-12">
                         <a href="@post.Url" class="sub-article">
                             <img class="img-fluid" src="@(post.MainImage != null ? post.MainImage.GetCropUrl("smallFrontpage") : string.Empty)">
                             <div class="article-presentation">

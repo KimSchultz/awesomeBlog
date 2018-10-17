@@ -1,5 +1,32 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.BlogPosts>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "Root.cshtml";
+    Layout = "Root.cshtml";
+    var blogs = Model.Content.Descendants<BlogPost>().OrderByDescending(p => p.PostDate).ToList();
+    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("da-DK");
 }
+
+<div class="row">
+    <div class="col">
+        @if (blogs.Any())
+        {
+            <div class="row">
+                @foreach (var post in blogs)
+                {
+                    <div class="col-md-4 col-12">
+                        <a href="@post.Url" class="sub-article">
+                            <img class="img-fluid" src="@(post.MainImage != null ? post.MainImage.GetCropUrl("bigFrontpage") : string.Empty)">
+                            <div class="article-presentation">
+                                <h3>@post.Name</h3>
+                                <span>@post.PostDate.ToString("d. MMMM yyyy", culture)</span>
+                                <p>
+                                    @post.Description
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
